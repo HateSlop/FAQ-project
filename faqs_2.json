@@ -1,0 +1,26 @@
+[
+  {
+    "question": "해당 웹페이지의 주요 기능은 무엇인가요?",
+    "answer": "해당 웹페이지는 대학수학능력시험과 관련된 정보를 제공하는 나무위키 페이지입니다."
+  },
+  {
+    "question": "",
+    "answer": "Q2: 어떤 메타데이터 정보가 제공되고 있나요?"
+  },
+  {
+    "question": "위 텍스트는 어떤 종류의 코드인가요?",
+    "answer": "위 텍스트는 HTML과 CSS 코드입니다."
+  },
+  {
+    "question": "",
+    "answer": "Q2: 왜 해당 코드에는 meta 태그와 script 태그가 포함되어 있나요?"
+  },
+  {
+    "question": "웹사이트에서 어떤 광고 스크립트들이 사용되고 있는가?",
+    "answer": "현재 사용 중인 광고 스크립트는 GPT.js, WTG Prebid, Amazon-adsystem, Fastclick, Cadmus script 등이 있다."
+  },
+  {
+    "question": "",
+    "answer": "Q2: 나무위키 웹사이트의 최근 변경과 최근 토론은 어떻게 접근할 수 있는가?"
+  }
+]

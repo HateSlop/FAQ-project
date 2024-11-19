@@ -1,0 +1,26 @@
+[
+  {
+    "question": "어떤 사이트의 스크립트가 포함되어 있는가?",
+    "answer": "https://cdn.hadronid.net/hadron.js와 https://script.4dex.io/localstore.js의 스크립트가 포함되어 있습니다."
+  },
+  {
+    "question": "",
+    "answer": "Q2: 메타 태그 중 가장 중요한 정보는 무엇인가?"
+  },
+  {
+    "question": "위 텍스트는 어떤 내용을 다루고 있나요?",
+    "answer": "위 텍스트는 HTML 및 CSS 코드로 이루어져 있습니다."
+  },
+  {
+    "question": "",
+    "answer": "Q2: 위 텍스트에 포함된 <script> 태그는 무엇을 의미하나요?"
+  },
+  {
+    "question": "위 텍스트에 포함된 외부 스크립트들은 어떤 역할을 하는 것인가요?",
+    "answer": "위 텍스트에 포함된 외부 스크립트들은 광고 및 데이터 수집을 위한 스크립트로 보입니다."
+  },
+  {
+    "question": "",
+    "answer": "Q2: 외부 스크립트들이 페이지에 영향을 미치는 방식은 무엇인가요?"
+  }
+]
