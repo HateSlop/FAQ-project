@@ -2,4 +2,5 @@
 **/.env
 faiss_db.pkl
 faq_items.pkl 
+*.png 
 
