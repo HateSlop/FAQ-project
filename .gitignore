@@ -1,0 +1,7 @@
+**/config.py
+**/__pycache__
+**/.DS_Store
+**/.news-project
+**/.env
+**/venv
+**/workflow.ipynb
