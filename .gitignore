@@ -3,5 +3,5 @@
 **/.DS_Store
 **/.news-project
 **/.env
-**/venv
+venv/
 **/workflow.ipynb
