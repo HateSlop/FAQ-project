@@ -1,23 +1,25 @@
+import os
 import openai
-import pickle
-import faiss
+import faiss 
 import numpy as np
+from dotenv import load_dotenv
 
-# OpenAI API 설정
-openai.api_key = "YOUR_OPENAI_API_KEY"
+load_dotenv()
+OPENAI_API_KEY=os.getenv("OPENAI_API_KEY")
+openai.api_key = OPENAI_API_KEY
 
 def load_faiss_database(file_path: str):
-    """
-    FAISS 데이터베이스를 로드합니다.
-    """
     return faiss.read_index(file_path)
 
-def get_embedding(text, model="text-embedding-ada-002"):
+def get_embedding(texts, model="text-embedding-3-small"):
     """
-    텍스트를 벡터로 변환합니다.
+    OpenAI API를 사용하여 텍스트 임베딩을 생성하는 함수.
     """
-    response = openai.Embedding.create(input=[text], model=model)
-    return np.array(response['data'][0]['embedding'], dtype=np.float32)
+    response = openai.Embedding.create(input=texts, model=model)
+    embeddings = [item['embedding'] for item in response['data']]
+    return np.array(embeddings)
+
+
 
 def search_similar_question(user_question, faiss_db, k=3):
     """
@@ -45,10 +47,50 @@ def generate_answer(user_question, matched_question, matched_answer):
 
         관련 정보를 찾을 수 없습니다. 사용자에게 답변을 제안하세요.
         """
-
+    
     response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=[{"role": "user", "content": prompt}],
-        max_tokens=150
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+            ]
     )
-    return response['choices'][0]['message']['content'].strip()
+    answer = response.choices[0].message.content
+    return answer
+
+
+if __name__ == "__main__":
+    # FAISS 데이터베이스 파일 경로
+    faiss_db_path = "faiss_db.index" 
+
+    try:
+        # FAISS 데이터베이스 로드
+        print("FAISS 데이터베이스를 로드 중...")
+        faiss_db = load_faiss_database(faiss_db_path)
+        print("FAISS 데이터베이스가 성공적으로 로드되었습니다.")
+
+        # 테스트 사용자 질문
+        user_question = "안녕"
+
+        # FAISS에서 유사한 질문 검색
+        print("유사한 질문을 검색 중...")
+        indices, distances = search_similar_question(user_question, faiss_db)
+
+        # 매칭된 질문과 답변 출력
+        if len(indices) > 0:
+            # 여기에 실제 데이터베이스에서 질문 및 답변을 가져오는 로직 필요
+            matched_question = f"매칭된 질문 {indices[0]}"
+            matched_answer = f"매칭된 답변 {indices[0]}"
+            print(f"매칭된 질문: {matched_question}")
+            print(f"매칭된 답변: {matched_answer}")
+        else:
+            matched_question = None
+            matched_answer = None
+
+        # OpenAI 모델을 사용해 최종 답변 생성
+        print("답변을 생성 중...")
+        answer = generate_answer(user_question, matched_question, matched_answer)
+        print(f"생성된 답변: {answer}")
+
+    except Exception as e:
+        print(f"오류가 발생했습니다: {e}")

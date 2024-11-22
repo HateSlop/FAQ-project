@@ -1,6 +1,7 @@
-**/config.py
-**/__pycache__
-**/.DS_Store
 **/.venv
 **/.env
-
+**/faiss_db.index
+**/faq_items.pkl
+**/faq.json
+**/faq.pkl
+**/__pycache__

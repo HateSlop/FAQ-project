@@ -1,3 +1,4 @@
+import pickle
 import asyncio
 from data_collection import load_and_transform
 from FAQ_Generation import generate_faq_from_text, save_faq_to_json, save_faq_to_pickle
